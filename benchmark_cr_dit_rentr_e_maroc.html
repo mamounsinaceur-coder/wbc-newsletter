@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmark Stratégique - Crédit Rentrée Maroc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --bg-main: #fcfaf7;
+            --primary: #1e293b;
+            --accent: #b45309;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--primary);
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            background-color: rgba(252, 250, 247, 0.8);
+        }
+
+        .actor-card {
+            transition: all 0.3s ease;
+        }
+        .actor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-active {
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .hide-scroll::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="nav-sticky border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold tracking-tighter text-stone-800">STRAT<span class="text-amber-700">LAB</span></span>
+                    <div class="h-6 w-px bg-stone-300 mx-2"></div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-stone-500 hidden sm:block">Benchmark Rentrée Scolaire 2024-2026</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#panorama" class="hover:text-amber-700 transition">Panorama</a>
+                    <a href="#acteurs" class="hover:text-amber-700 transition">Acteurs</a>
+                    <a href="#comparatif" class="hover:text-amber-700 transition">Analyse</a>
+                    <a href="#conclusion" class="bg-stone-800 text-white px-4 py-2 rounded-full hover:bg-amber-800 transition">Plan Eqdom</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        
+        <!-- Hero Section -->
+        <header class="mb-16 text-center md:text-left">
+            <h1 class="text-4xl md:text-6xl font-serif text-stone-900 mb-4">L'Échiquier du Crédit Rentrée</h1>
+            <p class="text-lg text-stone-600 max-w-2xl">Analyse stratégique et benchmark concurrentiel du marché marocain. Comment transformer une dette de subsistance en investissement d'avenir ?</p>
+        </header>
+
+        <!-- Panorama Section -->
+        <section id="panorama" class="mb-20">
+            <div class="bg-stone-900 text-stone-100 rounded-3xl p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="border-l-2 border-amber-600 pl-6">
+                        <p class="text-stone-400 text-sm uppercase tracking-wider mb-2">Encours total CAC</p>
+                        <div class="text-4xl font-bold">162 Mrd <span class="text-xl">MAD</span></div>
+                        <p class="text-emerald-400 text-sm mt-2">▲ +7,9% de croissance</p>
+                    </div>
+                    <div class="border-l-2 border-amber-600 pl-6">
+                        <p class="text-stone-400 text-sm uppercase tracking-wider mb-2">Secteur Financement</p>
+                        <div class="text-4xl font-bold">+11,5%</div>
+                        <p class="text-stone-400 text-sm mt-2">Sur les nouveaux octrois</p>
+                    </div>
+                    <div class="border-l-2 border-amber-600 pl-6">
+                        <p class="text-stone-400 text-sm uppercase tracking-wider mb-2">Pic de saisonnalité</p>
+                        <div class="text-4xl font-bold">Sept-Oct</div>
+                        <p class="text-stone-400 text-sm mt-2">Le moment de vérité familial</p>
+                    </div>
+                </div>
+                <div class="mt-12 pt-8 border-t border-stone-800">
+                    <p class="text-stone-300 italic">"La rentrée scolaire au Maroc s'impose comme un régulateur budgétaire incontournable pour les classes moyennes, où le crédit devient un amortisseur social crucial."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explorateur d'Acteurs -->
+        <section id="acteurs" class="mb-20">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+                <div>
+                    <h2 class="text-3xl font-serif text-stone-900">Profils des Acteurs Financiers</h2>
+                    <p class="text-stone-500">Filtrage dynamique par typologie d'institution</p>
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-2 hide-scroll">
+                    <button onclick="filterActors('all')" class="filter-btn px-4 py-2 rounded-full border border-stone-300 text-sm hover:border-amber-700 active-filter">Tous</button>
+                    <button onclick="filterActors('Crédit')" class="filter-btn px-4 py-2 rounded-full border border-stone-300 text-sm hover:border-amber-700">Organismes de Crédit</button>
+                    <button onclick="filterActors('Banque')" class="filter-btn px-4 py-2 rounded-full border border-stone-300 text-sm hover:border-amber-700">Banques Universelles</button>
+                    <button onclick="filterActors('Paiement')" class="filter-btn px-4 py-2 rounded-full border border-stone-300 text-sm hover:border-amber-700">Etablissements de Paiement</button>
+                </div>
+            </div>
+
+            <div id="actors-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Les cartes seront injectées par JS -->
+            </div>
+        </section>
+
+        <!-- Analyse Comparative & Graphiques -->
+        <section id="comparatif" class="mb-20 bg-white rounded-3xl p-8 shadow-sm border border-stone-100">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif text-stone-900 mb-2">Cartographie des Postures</h2>
+                <p class="text-stone-500">Visualisation du niveau d'émotion vs modernité des campagnes</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-amber-600 rounded-full"></span>
+                        Matrice Stratégique : Émotion vs Modernité
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="positioningChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-6 text-stone-700">
+                    <div class="bg-stone-50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-amber-800 mb-2">L'Axe Rationnel (Bas Droite)</h4>
+                        <p class="text-sm">Dominé par Salafin et Vivalis. Communication centrée sur les caractéristiques techniques du crédit (Taux, Mensualité, Délai).</p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-amber-800 mb-2">L'Axe Émotionnel (Haut Gauche)</h4>
+                        <p class="text-sm">Eqdom et Al Barid Bank préemptent ce terrain via la RSE et l'inclusion populaire, créant un lien fort de solidarité.</p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-amber-800 mb-2">L'Axe Modernité (Haut Droite)</h4>
+                        <p class="text-sm">CIH Bank et Sofac mènent la danse avec des parcours 100% digitaux et des codes visuels proches de la "Gen Z".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Territoires Strategiques -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-serif text-stone-900 mb-12 text-center">Les Territoires de Communication</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-8 border-2 border-dashed border-stone-200 rounded-3xl">
+                    <div class="text-amber-700 font-bold text-xl mb-4">1. Le Tampon de Survie</div>
+                    <p class="text-sm text-stone-600 mb-6">Focus sur l'urgence budgétaire et la trésorerie immédiate.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-stone-100 px-3 py-1 rounded text-xs">Wafasalaf</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded text-xs">Al Barid</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded text-xs">Cash Plus</span>
+                    </div>
+                </div>
+                <div class="p-8 border-2 border-dashed border-stone-200 rounded-3xl">
+                    <div class="text-amber-700 font-bold text-xl mb-4">2. L'Ascenseur Social</div>
+                    <p class="text-sm text-stone-600 mb-6">Focus sur la réussite, les études supérieures et l'excellence.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-stone-100 px-3 py-1 rounded text-xs">CIH Bank</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded text-xs">Sofac</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded text-xs">AWB</span>
+                    </div>
+                </div>
+                <div class="p-8 border-2 border-stone-800 bg-stone-900 text-white rounded-3xl">
+                    <div class="text-amber-500 font-bold text-xl mb-4">3. Impact & Solidarité</div>
+                    <p class="text-sm text-stone-400 mb-6">Focus sur l'utilité publique, le don et l'égalité des chances.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-stone-800 px-3 py-1 rounded text-xs">Eqdom</span>
+                        <span class="bg-stone-800 px-3 py-1 rounded text-xs">BOA (Fondation)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plan Strategique Eqdom -->
+        <section id="conclusion" class="mb-20">
+            <div class="bg-stone-100 rounded-3xl p-8 md:p-16">
+                <div class="max-w-3xl mx-auto">
+                    <span class="text-amber-700 font-bold uppercase tracking-widest text-sm mb-4 block">Recommandation Stratégique</span>
+                    <h2 class="text-4xl font-serif text-stone-900 mb-8">Eqdom : Vers la "Rentrée Positive"</h2>
+                    
+                    <div class="space-y-12">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                                <span class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-sans">01</span>
+                                Le Positionnement : Financement Éthique
+                            </h3>
+                            <p class="text-stone-600 pl-11">Relier l'image RSE (AMO) à l'offre commerciale. Sortir de la "dette" pour entrer dans "l'investissement familial solidaire".</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pl-11">
+                            <div class="bg-white p-6 rounded-2xl border border-stone-200">
+                                <h4 class="font-bold mb-2">Concept "Générations"</h4>
+                                <p class="text-xs text-stone-500">1 crédit souscrit = 1 kit scolaire offert à un orphelin. L'emprunt devient un acte social.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-stone-200">
+                                <h4 class="font-bold mb-2">Pack Éco-Tech</h4>
+                                <p class="text-xs text-stone-500">Crédit à taux préférentiel pour l'équipement reconditionné certifié. Digitalisation responsable.</p>
+                            </div>
+                        </div>
+
+                        <div class="pl-11 pt-8">
+                            <div class="p-6 bg-stone-900 text-stone-100 rounded-2xl relative overflow-hidden">
+                                <div class="relative z-10">
+                                    <h4 class="text-amber-500 font-bold mb-2">La Promesse Forte</h4>
+                                    <p class="text-xl font-serif italic">"Réaliser le potentiel de votre enfant tout en participant à l'égalité des chances au Maroc."</p>
+                                </div>
+                                <div class="absolute right-[-20px] bottom-[-20px] text-stone-800 text-8xl font-serif opacity-20 pointer-events-none">"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-900 text-stone-500 py-12 px-4 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm">© 2024 StratLab Finance Benchmark - Document Confidentiel</div>
+            <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center hover:text-white transition cursor-pointer">In</div>
+                <div class="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center hover:text-white transition cursor-pointer">Tw</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const actorsData = [
+            {
+                name: "Eqdom",
+                type: "Crédit",
+                offer: "Action 'Bach May7essouch Bel Far9' & Crédit Personnel",
+                message: "Solidarité nationale pour les fournitures des orphelins.",
+                pos: "Solidarité, Proximité humaine, Digitalisation simplifiée.",
+                target: "Donateurs, Fonctionnaires, Salariés.",
+                strength: "Capital sympathie unique, territoire éthique fort.",
+                weakness: "Absence d'offre commerciale 'Rentrée' explicitement marketée.",
+                emotion: 9, modernity: 6, diff: 8
+            },
+            {
+                name: "Wafasalaf",
+                type: "Crédit",
+                offer: "Salaf Lahbab (Différé 3 mois)",
+                message: "Payez vos besoins de rentrée, remboursez dans 3 mois.",
+                pos: "Soulagement immédiat, complicité familiale.",
+                target: "Ménages classe moyenne, Parents stressés.",
+                strength: "Le différé de 3 mois est l'offre la plus attractive du marché.",
+                weakness: "Risque de surendettement au basculement après 3 mois.",
+                emotion: 7, modernity: 8, diff: 9
+            },
+            {
+                name: "Sofac",
+                type: "Crédit",
+                offer: "Financement études (Crediz)",
+                message: "Le meilleur avenir académique pour vos enfants.",
+                pos: "Réussite, Modernité digitale, Aspirationnel.",
+                target: "Parents d'étudiants, Cadres urbains.",
+                strength: "Plateforme digitale Crediz ultra-fluide, partenariats HEM.",
+                weakness: "Communication peu axée sur la rentrée primaire/secondaire.",
+                emotion: 6, modernity: 9, diff: 7
+            },
+            {
+                name: "CIH Bank",
+                type: "Banque",
+                offer: "Crédit Elan Sup (Différé 6 ans)",
+                message: "Réalisez vos ambitions d'études supérieures sans contraintes.",
+                pos: "Rupture d'usage, Futur, Focus Jeunesse.",
+                target: "Étudiants, Familles classes supérieures.",
+                strength: "Différé record de 6 ans, image de marque connectée.",
+                weakness: "Délaisse les besoins modestes de fournitures scolaires.",
+                emotion: 5, modernity: 10, diff: 9
+            },
+            {
+                name: "Al Barid Bank",
+                type: "Banque",
+                offer: "Hssab Mouwadaf Litaalim",
+                message: "La banque inclusive pour l'éducation de tous.",
+                pos: "Accessibilité tarifaire (7 DH/mois), Proximité sociale.",
+                target: "Enseignants, Ménages modestes, Ruraux.",
+                strength: "Inclusion financière massive, tarif imbattable.",
+                weakness: "Image perçue comme moins technologique par les jeunes.",
+                emotion: 8, modernity: 5, diff: 8
+            },
+            {
+                name: "Salafin",
+                type: "Crédit",
+                offer: "Damana Salaf (Projet Personnel)",
+                message: "Liberté d'utilisation sans justificatif.",
+                pos: "Pragmatisme, Flexibilité technique.",
+                target: "Salariés, Professions libérales.",
+                strength: "Clarté des taux et simplicité de souscription.",
+                weakness: "Discours générique, manque de lien émotionnel.",
+                emotion: 3, modernity: 6, diff: 4
+            },
+            {
+                name: "Cash Plus",
+                type: "Paiement",
+                offer: "Retrait Tayssir & Bourses",
+                message: "Retirez vos aides et payez vos frais au coin de la rue.",
+                pos: "Utilité immédiate, Hyper-proximité physique.",
+                target: "Ménages populaires, Étudiants.",
+                strength: "Réseau de distribution colossal (villes et campagnes).",
+                weakness: "Ne propose pas de crédit direct (statut limité).",
+                emotion: 4, modernity: 7, diff: 6
+            },
+            {
+                name: "Attijariwafa bank",
+                type: "Banque",
+                offer: "Plan Éducation (Épargne)",
+                message: "L'épargne qui assure l'avenir de vos enfants.",
+                pos: "Prévoyance, Sécurité, Transmission.",
+                target: "Parents prévoyants, Fonctionnaires FM6.",
+                strength: "Garantie de rente éducative en cas d'accident de la vie.",
+                weakness: "Pas de réponse à l'urgence de trésorerie immédiate.",
+                emotion: 7, modernity: 6, diff: 8
+            }
+        ];
+
+        function filterActors(type) {
+            const grid = document.getElementById('actors-grid');
+            grid.innerHTML = '';
+            
+            const filtered = type === 'all' ? actorsData : actorsData.filter(a => a.type === type);
+            
+            filtered.forEach(actor => {
+                const card = document.createElement('div');
+                card.className = "actor-card bg-white p-6 rounded-3xl border border-stone-100 shadow-sm flex flex-col";
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-bold">${actor.type}</span>
+                        <div class="text-stone-300">•••</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-stone-900">${actor.name}</h3>
+                    <p class="text-sm font-semibold text-amber-600 mb-4">${actor.offer}</p>
+                    <p class="text-sm text-stone-600 mb-4 line-clamp-2 italic">"${actor.message}"</p>
+                    <div class="mt-auto space-y-3 pt-4 border-t border-stone-50">
+                        <div class="flex justify-between text-xs">
+                            <span class="text-stone-400">Positionnement</span>
+                            <span class="text-stone-700 font-medium">${actor.pos}</span>
+                        </div>
+                        <div class="flex justify-between text-xs">
+                            <span class="text-stone-400">Force</span>
+                            <span class="text-emerald-700 font-medium">${actor.strength}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update UI
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-700', 'text-white', 'border-amber-700');
+                if(btn.innerText.includes(type) || (type === 'all' && btn.innerText === 'Tous')) {
+                    btn.classList.add('bg-amber-700', 'text-white', 'border-amber-700');
+                }
+            });
+        }
+
+        function initCharts() {
+            const ctx = document.getElementById('positioningChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: actorsData.map(a => ({
+                        label: a.name,
+                        data: [{ x: a.modernity, y: a.emotion }],
+                        backgroundColor: a.name === 'Eqdom' ? '#b45309' : '#1e293b',
+                        pointRadius: a.name === 'Eqdom' ? 10 : 6
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Modernité / Digitalisation', font: { size: 10 } },
+                            min: 0, max: 11,
+                            grid: { color: '#f3f4f6' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Émotion / Lien Social', font: { size: 10 } },
+                            min: 0, max: 11,
+                            grid: { color: '#f3f4f6' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.dataset.label}: Emotion ${ctx.raw.y}, Modernité ${ctx.raw.x}`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            filterActors('all');
+            initCharts();
+        });
+    </script>
+</body>
+</html>
