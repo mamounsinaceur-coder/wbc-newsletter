@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBC RADAR #01 — Morocco Mood · Publicis WBC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',Arial,sans-serif; background:#F2EDE4; color:#1a1a1a; line-height:1.7; }
+  .wrap { max-width:700px; margin:0 auto; background:#F5F0E8; }
+  a { color:#9D833E; }
+  /* Topbar (V15) */
+  .topbar { background:#1a1a1a; padding:9px 36px; text-align:center; font-size:10px; font-weight:600; letter-spacing:3px; color:rgba(255,255,255,0.55); text-transform:uppercase; }
+  .topbar span { color:#9D833E; }
+  /* Header (V15) */
+  .header { background:#fff; padding:26px 40px 22px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #e8e0d4; }
+  .header-left { display:flex; align-items:center; gap:16px; }
+  .logo { width:80px; height:80px; object-fit:contain; }
+  .pre-title { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#9D833E; margin-bottom:6px; }
+  .big-title { font-family:'Playfair Display',serif; font-size:38px; font-weight:900; color:#1a1a1a; line-height:1.05; letter-spacing:-0.5px; }
+  .big-title em { color:#9D833E; font-style:normal; }
+  .sub-title { font-size:12px; color:#999; font-style:italic; margin-top:7px; }
+  .header-right { text-align:right; flex-shrink:0; }
+  .edition-num { font-family:'Playfair Display',serif; font-size:15px; font-weight:700; color:#1a1a1a; }
+  .edition-meta { font-size:11px; color:#aaa; margin-top:5px; line-height:1.9; }
+  .gold-line { height:2px; background:linear-gradient(90deg,#9D833E,#C8A95A,#9D833E); }
+  .quote-block { background:#1a1a1a; padding:0 50px; text-align:center; }
+  .quote-inner { border-top:1px solid rgba(157,131,62,0.3); border-bottom:1px solid rgba(157,131,62,0.3); padding:20px 0; }
+  .quote-text { font-family:'Playfair Display',serif; font-size:14px; font-style:italic; color:rgba(255,255,255,0.88); line-height:1.8; }
+  /* Body */
+  .body-zone { padding:6px 40px 30px; }
+  .sec-label { display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid #C8A95A; border-left:4px solid #9D833E; padding:5px 14px; margin:40px 0 18px; font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#1a1a1a; }
+  /* Edito */
+  .edito { background:#fff; padding:28px 32px; }
+  .edito h1 { font-family:'Playfair Display',serif; font-size:30px; font-weight:900; line-height:1.15; margin-bottom:4px; }
+  .edito h2 { font-family:'Playfair Display',serif; font-size:16px; font-weight:400; font-style:italic; color:#9D833E; margin-bottom:16px; }
+  .edito p { font-size:13.5px; color:#2b2b2b; margin-bottom:12px; }
+  .edito .sign { font-family:'Playfair Display',serif; font-style:italic; font-size:13.5px; color:#9D833E; margin-top:14px; }
+  /* Insight */
+  .ins-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:#1a1a1a; line-height:1.25; margin-bottom:16px; }
+  .mov { margin-bottom:14px; }
+  .mov-label { font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:8px; }
+  /* Le signal : bloc dark (comme les blocs stats) */
+  .signal { background:#1a1a1a; padding:22px 26px; position:relative; }
+  .signal::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#9D833E,#C8A95A); }
+  .signal .mov-label { color:#9D833E; }
+  .signal p { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.85; margin-bottom:10px; }
+  .signal p:last-child { margin-bottom:0; }
+  .signal strong { color:#fff; }
+  .src { font-size:11px; color:rgba(255,255,255,0.35); }
+  .src a { color:rgba(200,169,90,0.85); text-decoration:none; }
+  /* Sous-texte */
+  .soustexte { padding:14px 4px 2px; }
+  .soustexte .mov-label { color:#9D833E; }
+  .soustexte p { font-size:13.5px; color:#2b2b2b; margin-bottom:10px; }
+  .soustexte .src { color:#aaa; }
+  .soustexte .src a { color:#9D833E; }
+  /* Human truth */
+  .truth { background:#fff; border-top:1px solid #C8A95A; border-bottom:1px solid #C8A95A; padding:22px 28px; text-align:center; }
+  .truth .mov-label { color:#9D833E; }
+  .truth p { font-family:'Playfair Display',serif; font-style:italic; font-size:17px; font-weight:700; color:#1a1a1a; line-height:1.55; }
+  /* So what : style verdict */
+  .sowhat { background:#fff; border-left:4px solid #9D833E; padding:16px 20px; display:flex; gap:10px; }
+  .sowhat .vs { color:#9D833E; font-size:14px; }
+  .sowhat div p { font-size:12.5px; font-weight:500; color:#1a1a1a; line-height:1.65; margin-bottom:6px; }
+  .sowhat div p:last-child { margin-bottom:0; }
+  .sowhat .mov-label { color:#9D833E; margin-bottom:5px; }
+  /* Septembre */
+  .sept { background:#1a1a1a; padding:34px 32px; position:relative; margin-top:44px; }
+  .sept::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#9D833E,#C8A95A); }
+  .sept .kicker { font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#9D833E; margin-bottom:12px; }
+  .sept h2 { font-family:'Playfair Display',serif; font-size:23px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:16px; }
+  .sept h2 span { color:#C8A95A; }
+  .sept p { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.85; margin-bottom:12px; }
+  .choices { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:20px 0; }
+  .choice { background:rgba(157,131,62,0.08); border:1px solid rgba(157,131,62,0.2); padding:13px 8px; text-align:center; }
+  .choice .c-word { font-family:'Playfair Display',serif; font-size:14px; font-weight:900; color:#9D833E; }
+  .choice .c-sub { font-size:9.5px; color:rgba(255,255,255,0.5); margin-top:4px; line-height:1.4; }
+  .sept .punch { font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:#fff; margin-top:14px; text-align:center; }
+  /* Manifesto */
+  .manifesto { background:#fff; border-left:4px solid #9D833E; padding:18px 24px; margin-top:40px; }
+  .manifesto .m-title { font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#9D833E; margin-bottom:8px; }
+  .manifesto p { font-size:12.5px; color:#555; }
+  /* Footer (V15) */
+  .footer { background:#fff; border-top:3px solid #9D833E; padding:26px 40px; text-align:center; margin-top:44px; }
+  .footer-logo { width:60px; height:60px; object-fit:contain; margin-bottom:10px; }
+  .footer-brand { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; color:#1a1a1a; }
+  .footer-tag { font-size:11px; color:#9D833E; font-style:italic; margin-top:3px; }
+  .footer-links { margin:14px 0; display:flex; justify-content:center; gap:24px; }
+  .footer-link { font-size:10px; color:#aaa; text-decoration:none; letter-spacing:0.5px; text-transform:uppercase; }
+  .footer-legal { font-size:10px; color:#ccc; line-height:1.7; }
+  .footer-ed { display:inline-block; margin-top:10px; font-family:'Playfair Display',serif; font-size:11px; font-weight:700; color:#9D833E; letter-spacing:1.5px; }
+  @media (max-width:560px) {
+    .header { flex-direction:column; gap:16px; text-align:center; }
+    .header-left { flex-direction:column; }
+    .header-right { text-align:center; }
+    .big-title { font-size:30px; }
+    .choices { grid-template-columns:repeat(2,1fr); }
+    .body-zone { padding:6px 22px 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">✦ &nbsp; WBC Radar — Morocco Mood &nbsp;·&nbsp; <span>Publicis WBC</span> &nbsp;·&nbsp; Août 2026</div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <img class="logo" src="https://www.publicis-wbc.com/wp-content/uploads/2024/05/Logo-Publicis-WBC.png" alt="Publicis WBC">
+      <div>
+        <div class="pre-title">La Newsletter Insights de Publicis WBC</div>
+        <div class="big-title">WBC <em>Radar</em></div>
+        <div class="sub-title">Morocco Mood · Ce que l'actualité raconte vraiment des Marocains.</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="edition-num">RADAR #01 · Août 2026</div>
+      <div class="edition-meta">Numéro de lancement<br>Lecture : ~5 min<br>publicis-wbc.com</div>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+  <div class="quote-block">
+    <div class="quote-inner">
+      <p class="quote-text">« Lire le Maroc derrière l'actualité : ce qui s'est passé, ce que cela révèle du mindset marocain, ce que cela change pour les marques. »</p>
+    </div>
+  </div>
+  <div class="gold-line"></div>
+
+  <div class="body-zone">
+
+    <!-- EDITO -->
+    <div class="sec-label">✦ L'édito</div>
+    <div class="edito">
+      <h1>Un été entre fierté et fuite</h1>
+      <h2>Et une rentrée qui s'annonce sous tension.</h2>
+      <p>Ce numéro n'est pas une revue de presse. C'est une tentative de lire le Maroc derrière l'actualité : ce qui s'est passé, ce que cela révèle du mindset marocain, et ce que cela change pour les marques.</p>
+      <p>L'été 2026 raconte un pays traversé par des émotions contradictoires : la fierté d'un Mondial historique, un désir d'ailleurs qui a jeté des dizaines de milliers de jeunes vers Sebta et Melilla, le miroir tendu chaque été par la diaspora, une désinflation que personne ne ressent encore, et une chaleur qui n'est plus un sujet de conversation mais un mode de vie.</p>
+      <p>Cinq signaux, cinq sous-textes, cinq vérités humaines. Et une conviction pour septembre : après un été d'émotions, les Marocains entrent dans un mois de choix.</p>
+      <div class="sign">— Publicis WBC</div>
+    </div>
+
+    <!-- INSIGHT 1 -->
+    <div class="sec-label">✦ Insight 01 · Fierté</div>
+    <div class="ins-title">La fierté n'est plus une surprise</div>
+    <div class="mov signal">
+      <div class="mov-label">Le Signal — ce qui s'est passé</div>
+      <p>Le Maroc a de nouveau fait partie des huit meilleures équipes du monde. Après 2022, les Lions ont atteint les quarts du Mondial 2026 — <strong>Pays-Bas éliminés aux tirs au but en 16es, Canada battu 3-0 en 8es</strong> — avant de tomber face à la France. Seuls représentants arabes et africains à ce stade.</p>
+      <p class="src">Source : <a href="https://www.fifa.com/fr/tournaments/mens/worldcup/canadamexicousa2026/articles/calendrier-resultats-maroc-coupe-du-monde-2026" target="_blank">FIFA — Parcours du Maroc, CdM 2026</a></p>
+    </div>
+    <div class="mov soustexte">
+      <div class="mov-label">Le Sous-texte — ce que ça raconte</div>
+      <p>Quelque chose a changé depuis 2022. Le Marocain ne veut plus simplement être fier d'avoir participé : il commence à considérer la performance internationale comme quelque chose de <em>normal</em>. C'est le passage psychologique de « Regardez, nous aussi on peut le faire » à « Pourquoi est-ce qu'on ne le ferait pas ? ». Et ça dépasse le football : tourisme, infrastructures, cuisine, création, startups, automobile, événements.</p>
+    </div>
+    <div class="mov truth">
+      <div class="mov-label">The Human Truth</div>
+      <p>« La fierté marocaine a changé de nature : elle n'attend plus la surprise, elle exige la suite. »</p>
+    </div>
+    <div class="mov sowhat"><span class="vs">✦</span>
+      <div>
+        <div class="mov-label">So What for Brands?</div>
+        <p>La marocanité seule ne suffit plus. Le drapeau, le caftan, le zellige ou les Lions sont des signes — la nouvelle fierté marocaine cherche de la preuve, de la qualité et de l'ambition. Une marque qui se contente du symbole patriotique parlera au Maroc d'hier.</p>
+      </div>
+    </div>
+
+    <!-- INSIGHT 2 -->
+    <div class="sec-label">✦ Insight 02 · Ambivalence</div>
+    <div class="ins-title">Sebta / Melilla : le revers exact de cette fierté</div>
+    <div class="mov signal">
+      <div class="mov-label">Le Signal — ce qui s'est passé</div>
+      <p>À quelques semaines du parcours des Lions, des mouvements massifs ont convergé vers Sebta et Melilla. Le CNDH a suivi <strong>23 groupes numériques réunissant plus d'1,08 million de membres</strong> et plus de 1 400 publications quotidiennes, pointant la propagation d'une interprétation trompeuse d'une décision judiciaire espagnole. L'Intérieur évoque <strong>plus de 41 000 personnes</strong> et un mélange de désinformation, d'interprétations juridiques erronées et de réseaux de trafic.</p>
+      <p>Prudence sur la causalité : Le Monde n'a pas trouvé de preuve d'une opération coordonnée et décrit aussi une amplification organique par les réseaux sociaux.</p>
+      <p class="src">Sources : <a href="https://cndh.ma/fr/conclusions-preliminaires-sur-la-traversee-collective-vers-sebta-et-melilla-conseil-national-des-0" target="_blank">CNDH</a> · <a href="https://snrtnews.com/fr/article/porte-parole-du-ministere-de-linterieur-les-evenements-survenus-aux-points-de-passage" target="_blank">SNRT News / Intérieur</a> · <a href="https://www.lemonde.fr/pixels/article/2026/08/04/crise-de-ceuta-l-impossible-quete-des-origines-de-la-rumeur-d-une-ouverture-de-la-frontiere_6738730_4408996.html" target="_blank">Le Monde</a></p>
+    </div>
+    <div class="mov soustexte">
+      <div class="mov-label">Le Sous-texte — ce que ça raconte</div>
+      <p>Une fake news ne déplace pas des milliers de personnes parce qu'elle est bien fabriquée. Elle fonctionne quand elle rencontre un désir déjà présent. Et le contexte des jeunes reste difficile : selon le HCP, environ un Marocain de 15 à 29 ans sur trois est NEET — ni en emploi, ni en études, ni en formation. Non pas que les participants aux événements de Sebta soient des NEET : c'est l'indicateur du terrain social sur lequel circule le désir d'ailleurs.</p>
+      <p class="src">Source : <a href="https://www.hcp.ma/Jeunes-NEET-au-Maroc-Profilage-statistique-au-profit-de-l-action-publique_a4302.html" target="_blank">HCP — Jeunes NEET au Maroc</a></p>
+    </div>
+    <div class="mov truth">
+      <div class="mov-label">The Human Truth</div>
+      <p>« Le Marocain peut être immensément fier de son pays et rêver simultanément de partir. Ce ne sont pas deux populations — ce sont deux sentiments qui coexistent chez la même personne. »</p>
+    </div>
+    <div class="mov sowhat"><span class="vs">✦</span>
+      <div>
+        <div class="mov-label">So What for Brands?</div>
+        <p>Arrêter de représenter les Marocains comme uniformément optimistes, patriotes ou pessimistes. Le Maroc contemporain est ambivalent — et les marques qui savent tenir cette ambivalence sans la résoudre artificiellement gagneront en justesse et en crédibilité.</p>
+      </div>
+    </div>
+
+    <!-- INSIGHT 3 -->
+    <div class="sec-label">✦ Insight 03 · Diaspora</div>
+    <div class="ins-title">L'été, le Maroc se regarde dans le miroir de sa diaspora</div>
+    <div class="mov signal">
+      <div class="mov-label">Le Signal — ce qui s'est passé</div>
+      <p>Au 3 août, <strong>plus de 2,74 millions de MRE</strong> étaient entrés au Maroc dans le cadre de Marhaba 2026 — avec un nombre de véhicules en recul de 12,4 %, covoiturage oblige face au coût du déplacement. Dans le même temps, la destination Maroc progresse : à fin mai, arrivées touristiques <strong>+7 %</strong>, recettes voyages <strong>+21 %</strong> sur un an.</p>
+      <p class="src">Sources : <a href="https://snrtnews.com/fr/article/marhaba-2026-plus-de-27-millions-de-mre-accueillis-depuis-le-lancement-de-loperation-156470" target="_blank">SNRT News — Marhaba 2026</a> · <a href="https://mtaess.gov.ma/fr/conseil-dadministration-de-lonmt-le-maroc-confirme-sa-trajectoire-de-croissance/" target="_blank">Ministère du Tourisme / ONMT</a></p>
+    </div>
+    <div class="mov soustexte">
+      <div class="mov-label">Le Sous-texte — ce que ça raconte</div>
+      <p>Chaque été, plusieurs millions de Marocains de l'étranger reviennent avec leurs accents, leurs voitures, leurs standards et leurs récits. Et les Marocains d'ici les observent. L'Europe n'est pas un concept lointain : elle vient passer ses vacances dans la famille. Cela nourrit simultanément l'attachement au pays, la comparaison, l'envie, la critique — et parfois le désir de partir. Et l'été n'est que le moment visible du phénomène : entre les appels WhatsApp, les réseaux sociaux, les transferts d'argent et les allers-retours, la diaspora est présente toute l'année dans les foyers marocains — et change la donne en continu.</p>
+    </div>
+    <div class="mov truth">
+      <div class="mov-label">The Human Truth</div>
+      <p>« La diaspora n'est plus un visiteur d'été : connectée toute l'année, elle pèse en continu sur ce que les Marocains désirent, comparent et achètent. »</p>
+    </div>
+    <div class="mov sowhat"><span class="vs">✦</span>
+      <div>
+        <div class="mov-label">So What for Brands?</div>
+        <p>Un territoire magnifique à explorer : « Le Maroc vu par ceux qui reviennent et ceux qui restent. » Le MRE n'est pas qu'une cible bancaire et télécom saisonnière — c'est un médiateur culturel qui redéfinit les standards de consommation locaux, du retail à l'automobile.</p>
+      </div>
+    </div>
+
+    <!-- INSIGHT 4 -->
+    <div class="sec-label">✦ Insight 04 · Pouvoir d'achat</div>
+    <div class="ins-title">Les chiffres vont mieux, le sentiment pas encore</div>
+    <div class="mov signal">
+      <div class="mov-label">Le Signal — ce qui s'est passé</div>
+      <p>En juillet, l'IPC a reculé de <strong>0,6 %</strong> sur un an, avec une baisse de <strong>3,7 %</strong> des prix alimentaires. Mais le vécu des ménages est très différent : au T2, <strong>78,3 %</strong> disent que leur niveau de vie s'est dégradé sur douze mois, <strong>38,7 %</strong> s'endettent ou puisent dans leur épargne, et seuls <strong>2,6 %</strong> arrivent à épargner. Le tout avec une croissance estimée à <strong>4,8 %</strong> au T2.</p>
+      <p class="src">Sources : <a href="https://m.hcp.ma/L-Indice-des-prix-a-la-consommation-IPC-du-mois-de-Juillet-2026_a4344.html" target="_blank">HCP — IPC juillet 2026</a> · <a href="https://medias24.com/2026/07/15/confiance-des-menages-recul-au-deuxieme-trimestre-2026-malgre-une-amelioration-sur-un-an-hcp-1722821/" target="_blank">Médias24 — Confiance des ménages</a> · <a href="https://medias24.com/2026/07/16/conjoncture-le-hcp-prevoit-une-croissance-elevee-aux-2e-et-3e-trimestres-1723661/" target="_blank">Médias24 — Conjoncture</a></p>
+    </div>
+    <div class="mov soustexte">
+      <div class="mov-label">Le Sous-texte — ce que ça raconte</div>
+      <p>La désinflation statistique n'efface pas la mémoire de la vie chère. Quand on a passé trois ans à regarder chaque ticket de caisse, quelques mois de baisse des prix ne recréent pas un sentiment d'abondance. Le réflexe d'arbitrage est devenu une culture de consommation.</p>
+    </div>
+    <div class="mov truth">
+      <div class="mov-label">The Human Truth</div>
+      <p>« Les prix baissent sur le papier ; dans la tête des ménages, la vie chère continue. »</p>
+    </div>
+    <div class="mov sowhat"><span class="vs">✦</span>
+      <div>
+        <div class="mov-label">So What for Brands?</div>
+        <p>Septembre ne sera probablement pas le mois du « consommez davantage », mais du « choisissez mieux », « faites durer », « ça vaut vraiment son prix », « je vous facilite la vie ». Le signal marketing le plus important de la rentrée : parler valeur et maîtrise, pas volume.</p>
+      </div>
+    </div>
+
+    <!-- INSIGHT 5 -->
+    <div class="sec-label">✦ Insight 05 · Climat</div>
+    <div class="ins-title">Même les vacances sont devenues chaudes</div>
+    <div class="mov signal">
+      <div class="mov-label">Le Signal — ce qui s'est passé</div>
+      <p>Plusieurs vagues de chaleur cet été, avec des températures de <strong>5 à 12 °C au-dessus des normales</strong> et des pointes à <strong>45-47 °C</strong> dans plusieurs régions. La situation hydrique s'est pourtant nettement améliorée : barrages au-delà de <strong>72 %</strong> de remplissage en juillet, et reprise progressive de l'irrigation dans plusieurs périmètres.</p>
+      <p class="src">Sources : <a href="https://www.marocmeteo.ma/fr/episode-de-forte-chaleur-au-maroc" target="_blank">Maroc Météo</a> · <a href="https://medias24.com/2026/07/13/apres-des-annees-de-secheresse-lirrigation-revient-progressivement-dans-les-champs-1721397/" target="_blank">Médias24 — Irrigation</a></p>
+    </div>
+    <div class="mov soustexte">
+      <div class="mov-label">Le Sous-texte — ce que ça raconte</div>
+      <p>L'insight n'est plus « les Marocains prennent conscience du changement climatique ». Ils sont déjà dedans. La chaleur transforme les horaires, les sorties, la consommation d'eau, les vacances, les usages de la ville. L'adaptation climatique devient un comportement quotidien plutôt qu'une opinion environnementale.</p>
+    </div>
+    <div class="mov truth">
+      <div class="mov-label">The Human Truth</div>
+      <p>« Le climat n'est plus une cause à défendre : c'est un quotidien à organiser. »</p>
+    </div>
+    <div class="mov sowhat"><span class="vs">✦</span>
+      <div>
+        <div class="mov-label">So What for Brands?</div>
+        <p>Très exploitable pour boissons, mobilité, retail, tourisme, assurance, immobilier, équipement domestique : accompagner concrètement les nouveaux rythmes (horaires décalés, vie nocturne, fraîcheur, économie d'eau) plutôt que de communiquer sur des engagements abstraits.</p>
+      </div>
+    </div>
+
+    <!-- SEPTEMBRE -->
+    <div class="sec-label">✦ Et maintenant : septembre</div>
+    <div class="sept">
+      <div class="kicker">Le grand insight de rentrée</div>
+      <h2>Après un été d'émotions, les Marocains entrent dans <span>un mois de choix</span></h2>
+      <p>Les cours démarrent réellement dans tous les niveaux le 7 septembre. Trois jours plus tard, le 10, s'ouvre la campagne officielle des législatives, jusqu'au 22 — avant le scrutin du 23 septembre. Et depuis le 15 août, l'espace médiatique est entré dans sa période électorale réglementée : la HACA a fixé des règles spécifiques contre la désinformation et les contenus électoraux trompeurs générés par IA.</p>
+      <p>La rentrée 2026 ne sera pas simplement scolaire. Elle sera à la fois budgétaire, familiale, professionnelle, politique et informationnelle.</p>
+      <div class="choices">
+        <div class="choice"><div class="c-word">L'école</div><div class="c-sub">Choisir où et comment</div></div>
+        <div class="choice"><div class="c-word">Le budget</div><div class="c-sub">Choisir où dépenser</div></div>
+        <div class="choice"><div class="c-word">L'info</div><div class="c-sub">Choisir ce qu'on croit</div></div>
+        <div class="choice"><div class="c-word">Le vote</div><div class="c-sub">Choisir pour qui voter</div></div>
+        <div class="choice"><div class="c-word">L'essentiel</div><div class="c-sub">Choisir ce qu'on garde, ce qu'on sacrifie</div></div>
+      </div>
+      <p class="punch">Septembre sera moins un nouveau départ euphorique qu'un mois de reprise de contrôle.</p>
+      <p class="src" style="text-align:center; margin-top:14px;">Sources : <a href="https://www.men.gov.ma/fr/actualites/rappel-des-dates-de-la-rentr%C3%A9e-scolaire-2026/2027" target="_blank">Ministère de l'Éducation Nationale</a> · <a href="https://medias24.com/2026/03/05/les-elections-legislatives-auront-lieu-le-23-septembre-2026-1638259/" target="_blank">Médias24 — Législatives</a> · <a href="https://medias24.com/2026/06/23/medias-ia-sondages-en-prevision-des-legislatives-2026-la-haca-fixe-les-regles-de-la-campagne-1706471/" target="_blank">Médias24 — HACA</a></p>
+    </div>
+
+    <!-- MANIFESTO -->
+    <div class="manifesto">
+      <div class="m-title">✦ Le principe éditorial du Radar</div>
+      <p>Ne jamais expliquer l'actualité pour elle-même. Si une information ne permet pas d'apprendre quelque chose sur les aspirations, frustrations, contradictions ou comportements des Marocains, elle n'entre pas dans le Radar.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img class="footer-logo" src="https://www.publicis-wbc.com/wp-content/uploads/2024/05/Logo-Publicis-WBC.png" alt="Publicis WBC">
+    <div class="footer-brand">Publicis WBC</div>
+    <div class="footer-tag">WBC Radar — Morocco Mood · Publication Interne</div>
+    <div class="footer-links">
+      <a href="https://www.publicis-wbc.com" class="footer-link">publicis-wbc.com</a>
+      <a href="https://github.com/mamounsinaceur-coder/wbc-newsletter" class="footer-link">Archives</a>
+      <a href="#" class="footer-link">Se désinscrire</a>
+    </div>
+    <div class="footer-legal">Cette publication est réservée à usage interne.<br>Contenu éditorial Publicis WBC · Casablanca, Maroc · Publicis Groupe</div>
+    <div class="footer-ed">RADAR #01 · Août 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
